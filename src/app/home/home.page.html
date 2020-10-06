@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Open Trivia
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,7 +14,41 @@
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <div *ngIf="!startGame">
+    <p>Votre pseudo
+      <input type="string" [(ngModel)]="pseudo"/>
+      </p>
+     
+      <p>
+          Difficulté
+          <select [(ngModel)]="niveau">
+            
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+          </select>
+      </p>
+      <p>
+        <input type="checkbox" [(ngModel)]= "sauvegarder">
+        Sauvegarder mes infos
+      </p>
+      <div *ngIf="error"><p>{{error}}</p></div>
+      <button (click)="commencer()">Commencer</button>
+
+    </div>
+      
+      
+      <div *ngIf="startGame">
+         <p>Welcome {{ pseudo }}</p>
+         <p>de quelle couleur est le cheval blanc d henri 4 ?</p>
+         <div>
+           <button (click)="response('A')">Reponse A</button>
+           <button (click)="response('B')">Reponse B</button>
+           <button (click)="response('C')">Reponse C</button>
+           <button (click)="response('D')">Reponse D</button>
+         </div>
+         <button *ngIf="nextQuest">Next Question bro!</button>
+      </div>
   </div>
+
 </ion-content>

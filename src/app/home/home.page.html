@@ -32,7 +32,7 @@
         <input type="checkbox" [(ngModel)]= "sauvegarder">
         Sauvegarder mes infos
       </p>
-      <div *ngIf="error"><p>{{error}}</p></div>
+      <div *ngIf="error" class="error"><p>{{error}}</p></div>
       <button (click)="commencer()">Commencer</button>
 
     </div>

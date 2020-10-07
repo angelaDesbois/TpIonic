@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -14,11 +15,18 @@ export class HomePage {
   public nextQuest = false;
 
 
-  constructor() {}
+  constructor(private alertCtrl : AlertController) {}
 
-  public commencer(){
+  ngOnInit(){}
+
+  public async commencer(){
     if((this.pseudo === "" || this.pseudo.length < 3) || this.niveau === ""){
-      this.error = "Veuillez entrer un pseudo et un niveau";
+      const alert = await this.alertCtrl.create({
+        header : 'infos manquantes',
+        message : "Veuillez entrer un pseudo et un niveau"
+    });
+      alert.present();
+     // this.error = "Veuillez entrer un pseudo et un niveau";
       return;
     }
     this.startGame = true;

@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>
       Open Trivia
@@ -6,49 +6,69 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+ 
 
-  <div id="container">
+  <div >
     <div *ngIf="!startGame">
-    <p>Votre pseudo
-      <input type="string" [(ngModel)]="pseudo"/>
-      </p>
-     
-      <p>
-          Difficulté
-          <select [(ngModel)]="niveau">
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Votre pseudo</ion-label>
+          <ion-input type="string" [(ngModel)]="pseudo"></ion-input>
+        </ion-item>
+
+      <ion-item>
+         <ion-label>Difficulté</ion-label> 
+          <ion-select [(ngModel)]="niveau">
             
-              <option value="easy">Easy</option>
-              <option value="medium">Medium</option>
-              <option value="hard">Hard</option>
-          </select>
-      </p>
-      <p>
-        <input type="checkbox" [(ngModel)]= "sauvegarder">
+              <ion-select-option value="easy">Easy</ion-select-option>
+              <ion-select-option value="medium">Medium</ion-select-option>
+              <ion-select-option value="hard">Hard</ion-select-option>
+          </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-toggle [(ngModel)]= "sauvegarder"></ion-toggle>
         Sauvegarder mes infos
-      </p>
-      <div *ngIf="error" class="error"><p>{{error}}</p></div>
-      <button (click)="commencer()">Commencer</button>
+      </ion-item>
+
+    </ion-list>
+
+     <!-- <div *ngIf="error" class="error"><p>{{error}}</p></div>-->
+      <ion-button expand="full" (click)="commencer()">Commencer</ion-button>
 
     </div>
       
       
       <div *ngIf="startGame">
-         <p>Welcome {{ pseudo }}</p>
-         <p>de quelle couleur est le cheval blanc d henri 4 ?</p>
-         <div>
-           <button (click)="response('A')">Reponse A</button>
-           <button (click)="response('B')">Reponse B</button>
-           <button (click)="response('C')">Reponse C</button>
-           <button (click)="response('D')">Reponse D</button>
-         </div>
-         <button *ngIf="nextQuest">Next Question bro!</button>
+        <ion-text color="primary">
+         <p class="ion-text-center">Welcome {{ pseudo }}</p>
+        </ion-text>
+
+         <p class="ion-text-center">De quelle couleur est le cheval blanc d henri 4 ?</p>
+         <ion-grid>
+           <ion-row>
+             <ion-col size="6">
+                <ion-button expand="full" (click)="response('A')">Reponse A</ion-button>
+            </ion-col>
+
+            <ion-col size="6">
+                <ion-button expand="full" (click)="response('B')">Reponse B</ion-button>
+           </ion-col>
+
+           <ion-col size="6">
+              <ion-button expand="full" (click)="response('C')">Reponse C</ion-button>
+           </ion-col>
+
+           <ion-col size="6">
+              <ion-button expand="full" (click)="response('D')">Reponse D</ion-button>
+           </ion-col>
+
+          </ion-row>
+         </ion-grid>
+         <ion-button *ngIf="nextQuest" expand="full">Next Question bro!</ion-button>
       </div>
+
   </div>
 
 </ion-content>

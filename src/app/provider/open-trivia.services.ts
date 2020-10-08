@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
+// pas besoin si déclarer ds app.module et inversement.
 providedIn: 'root'
 })
 export class OpenTriviaService {

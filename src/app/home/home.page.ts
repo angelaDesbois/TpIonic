@@ -30,9 +30,17 @@ export class HomePage implements OnInit{
     this.nextQuest = false;
     this.numeroQuestion = 0;
     this.points = 0;
-    this.questions = await this.openTriviaService.getQuestions(this.niveau, 10);
-    
-    this.loadQuestion();
+    try{
+      this.questions = await this.openTriviaService.getQuestions(this.niveau, 10);
+      this.loadQuestion();
+
+    }catch(error){
+      const alert = await(this.alertCtrl.create({
+        message: error
+      }));
+      alert.present();
+    }
+   
   }
 
 

@@ -18,7 +18,7 @@ export class HomePage implements OnInit{
   public questions = [];
   public questionCourante;
   public numeroQuestion = 0;
-  public points = 0;
+  public points= 0;
 
 
   constructor(private alertCtrl : AlertController, private openTriviaService : OpenTriviaService) {}
@@ -29,7 +29,7 @@ export class HomePage implements OnInit{
     this.endGame = false;
     this.nextQuest = false;
     this.numeroQuestion = 0;
-    this.points = 0;
+   // this.points = 0;
     try{
       this.questions = await this.openTriviaService.getQuestions(this.niveau, 10);
       this.loadQuestion();
@@ -111,6 +111,7 @@ export class HomePage implements OnInit{
     
   retour() {
     this.startGame = false;
+
   } 
 
 }

@@ -79,7 +79,7 @@
       <!--  <ion-button *ngIf="nextQuest" expand="full">Next Question bro!</ion-button>--> 
 
       <ion-button *ngIf="nextQuest && !endGame" expand="full" (click)="questionSuivante()">Question suivante</ion-button>
-         <ion-text   id ="score" *ngIf = "endGame" >Score : {{ points }}</ion-text>
+         <ion-text   id ="score" *ngIf = "endGame" >TomatoScore : {{ points }}</ion-text>
         <ion-button *ngIf="endGame" expand="full" (click)="retour()">Tu veux rejouer ?</ion-button>
       </div>
 
